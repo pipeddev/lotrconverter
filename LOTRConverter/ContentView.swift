@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var showExchangeInfo = false
+    @State var leftAmount = ""
+    @State var rightAmount = ""
+    
+    
     var body: some View {
         ZStack {
             // Background image
@@ -44,9 +49,12 @@ struct ContentView: View {
                                 .font(.headline)
                                 .foregroundStyle(.white)
                         }
+                        .padding(.bottom, -5)
                         
                         // Text field
-                        Text("Text field")
+                        TextField("Amount", text: $leftAmount)
+                            .textFieldStyle(.roundedBorder)
+                            .multilineTextAlignment(.leading)
                     }
                     
                     // Equal sign
@@ -72,18 +80,35 @@ struct ContentView: View {
                                 .frame(height: 33)
                                 
                         }
+                        .padding(.bottom, -5)
                         
                         // Text field
-                        Text("Text field")
+                        TextField("Amount", text: $rightAmount)
+                            .textFieldStyle(.roundedBorder)
+                            .multilineTextAlignment(.trailing)
                     }
                 }
+                .padding()
+                .background(.black.opacity(0.5))
+                .clipShape(.capsule)
                 
                 Spacer()
                 
                 // info Button
-                Image(systemName: "info.circle.fill")
-                    .font(.largeTitle)
-                    .foregroundStyle(.white)
+                HStack {
+                    Spacer()
+                    
+                    Button {
+                        showExchangeInfo.toggle()
+                        
+                    } label: {
+                        Image(systemName: "info.circle.fill")
+                            .font(.largeTitle)
+                            .foregroundStyle(.white)
+                    }
+                    .padding(.trailing)
+                }
+                
             }
             //.border(Color.white)
         }
@@ -93,3 +118,4 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
