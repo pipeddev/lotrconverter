@@ -19,6 +19,7 @@ struct ContentView: View {
             Image(.background)
                 .resizable()
                 .ignoresSafeArea()
+                
             
             VStack {
                 // Prancing pony image
@@ -107,10 +108,14 @@ struct ContentView: View {
                             .foregroundStyle(.white)
                     }
                     .padding(.trailing)
+                    
                 }
                 
             }
             //.border(Color.white)
+        }
+        .sheet(isPresented: $showExchangeInfo) {
+            ExchangeInfo()
         }
     }
 }
